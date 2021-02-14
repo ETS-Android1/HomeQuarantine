@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "93510841360",
+    "project_id": "home-quarantine-bf76a",
+    "storage_bucket": "home-quarantine-bf76a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93510841360:android:6d48bc26c0b13c3d394695",
+        "android_client_info": {
+          "package_name": "com.unitbv.quarantineapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93510841360-jlc2av53b7garc2clscrpmvp8b44cbl6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt8yaAcZVnREk0JDw14HNQABXHqZfBy8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93510841360-jlc2av53b7garc2clscrpmvp8b44cbl6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

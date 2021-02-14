@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    android:elevation="10dp"
+    android:gravity="clip_horizontal|center|center_horizontal"
+    android:orientation="vertical"
+    tools:context=".CompleteRegister">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="25dp"
+        android:background="#731B1A1A"
+        android:elevation="10dp"
+        android:fadingEdgeLength="5dp"
+        android:padding="15dp"
+        android:shadowColor="#999A9999"
+        android:shadowDx="2.5"
+        android:shadowDy="-1.5"
+        android:shadowRadius="1.5"
+        android:text="In order to complete the registration please provide a selfie and scan your ID."
+        android:textAlignment="center"
+        android:textColor="#DEFFFFFF"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/cameraImageView"
+        android:layout_width="121dp"
+        android:layout_height="113dp"
+        android:layout_gravity="center"
+        android:padding="15dp"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <ImageView
+        android:id="@+id/selfie"
+        android:layout_width="234dp"
+        android:layout_height="218dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+</LinearLayout>
