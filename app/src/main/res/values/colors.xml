@@ -5,4 +5,12 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="startBlue">#09c6df</color>
     <color name="endBlue">#0bcce6</color>
+
+    <!-- colors for the button style -->
+    <color name="gradientStart">#4c84ff</color>
+    <color name="gradientEnd">#18a3fe</color>
+
+    <color name="tabIndicator">#c0c0c0</color>
+    <color name="introTitle">#000000</color>
+    <color name="introDescription">#656565</color>
 </resources>

@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                                                 currentUser = document.getString("fullname");
                                                 bundle = new Bundle();
                                                 bundle.putSerializable("currUser", currentUser);
-                                                intent = new Intent(MainActivity.this, CompleteRegister.class);
+                                                intent = new Intent(MainActivity.this, IntroActivity.class);
                                                 intent.putExtras(bundle);
                                                 startActivity(intent);
                                             }
