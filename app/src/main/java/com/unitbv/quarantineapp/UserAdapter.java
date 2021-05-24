@@ -39,6 +39,7 @@ public class UserAdapter extends ArrayAdapter<Users> {
         ImageView userIcon = view.findViewById(R.id.userIcon);
         TextView name = view.findViewById(R.id.name);
         TextView status = view.findViewById(R.id.status);
+        TextView lastCheck = view.findViewById(R.id.lastCheck);
 
         Users user = users.get(position);
 
@@ -48,6 +49,7 @@ public class UserAdapter extends ArrayAdapter<Users> {
 
         name.setText(user.getFullName());
         status.setText(user.getStatus());
+        lastCheck.setText(user.getLastCheck());
 
         return view;
     }

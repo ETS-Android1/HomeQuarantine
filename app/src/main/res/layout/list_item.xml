@@ -4,8 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/layout_bg"
-    android:elevation="1dp">
+    android:background="@drawable/layout_bg">
 
     <ImageView
         android:id="@+id/userIcon"
@@ -44,6 +43,18 @@
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@+id/userIcon"
         android:text="Status:"
+        android:textColor="?attr/colorControlNormal"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+    <TextView
+        android:id="@+id/lastCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/status"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/userIcon"
+        android:text="Last Check:"
         android:textColor="?attr/colorControlNormal"
         android:textSize="18sp"
         android:textStyle="italic" />

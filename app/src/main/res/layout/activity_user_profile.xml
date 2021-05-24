@@ -26,6 +26,8 @@
                     android:id="@+id/userAvatar"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/ervin" />
             </androidx.cardview.widget.CardView>

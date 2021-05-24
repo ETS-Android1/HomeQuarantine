@@ -3,12 +3,12 @@ package com.unitbv.quarantineapp;
 import java.io.Serializable;
 
 public class Users implements Serializable {
-    private String uid, fullName, email, birthday, phoneNumber, country, city, street, cnp, serieBuletin, idPic, profilePic, status;
+    private String uid, fullName, email, birthday, phoneNumber, country, city, street, cnp, serieBuletin, idPic, profilePic, status, FCM_Token, latitude, longitude, lastCheck;
     private boolean admin;
 
 
     // constructor
-    public Users(String uid, String fullName, boolean admin, String email, String birthday, String phoneNumber, String country, String city, String street, String cnp, String serieBuletin, String idPic, String profilePic, String status) {
+    public Users(String uid, String fullName, boolean admin, String email, String birthday, String phoneNumber, String country, String city, String street, String cnp, String serieBuletin, String idPic, String profilePic, String status, String FCM_Token, String latitude, String longitude, String lastCheck) {
         this.uid = uid;
         this.fullName = fullName;
         this.admin = admin;
@@ -23,6 +23,10 @@ public class Users implements Serializable {
         this.idPic = idPic;
         this.profilePic = profilePic;
         this.status = status;
+        this.FCM_Token = FCM_Token;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.lastCheck = lastCheck;
     }
 
     // getters & setters
@@ -139,4 +143,31 @@ public class Users implements Serializable {
         this.status = status;
     }
 
+    public String getFCM_Token() { return FCM_Token; }
+
+    public void setFCM_Token(String FCM_Token) { this.FCM_Token = FCM_Token; }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLastCheck() {
+        return lastCheck;
+    }
+
+    public void setLastCheck(String lastCheck) {
+        this.lastCheck = lastCheck;
+    }
 }

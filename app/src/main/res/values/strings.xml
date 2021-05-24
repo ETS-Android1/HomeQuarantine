@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Home Quarantine</string>
+
+    <string name="agora_app_id">74eacb428c12400094da582170a8b66a</string>
+
+    <string name="agora_app_certificate">8a7c2635143847a2ae51fbe3b74395c1</string>
+
+    <string name="agora_access_token">00674eacb428c12400094da582170a8b66aIADKiX/v9YLe1etBO7f7GwsEXF6HkxfnkuFEcSJKEFQnxGLMzZAAAAAAEAB33sfLOxedYAEAAQA7F51g</string>
+
+    <string name="fcm_token">FCM Token: %s</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="login_email_hint">Email</string>
+
+    <string name="login_password_hint">Password</string>
 </resources>
