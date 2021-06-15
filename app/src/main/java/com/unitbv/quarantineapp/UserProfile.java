@@ -1,7 +1,9 @@
 package com.unitbv.quarantineapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,8 +25,14 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
 import okhttp3.ResponseBody;
@@ -38,7 +48,7 @@ public class UserProfile extends AppCompatActivity {
     private Intent intent = null;
     private Bundle bundle = null;
 
-    private FirebaseFirestore db = null;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth auth = null;
 
     private Users currentUser = null;
@@ -155,5 +165,101 @@ public class UserProfile extends AppCompatActivity {
                 }
             }
         });
+
+        userEditBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder editUserBuilder = new AlertDialog.Builder(UserProfile.this);
+
+                View addUserView = getLayoutInflater().inflate(R.layout.edit_user_dialog, null);
+
+                editUserBuilder.setTitle("Edit current user");
+
+                final Calendar calendar = Calendar.getInstance();
+
+                final EditText fullname = addUserView.findViewById(R.id.editTextFullNameEdit);
+                final EditText email = addUserView.findViewById(R.id.editTextEmailEdit);
+                final EditText birthday = addUserView.findViewById(R.id.editTextBirthdayEdit);
+                final EditText phoneNumber = addUserView.findViewById(R.id.editTextTelefonEdit);
+                final EditText country = addUserView.findViewById(R.id.editTextCountryEdit);
+                final EditText city = addUserView.findViewById(R.id.editTextCityEdit);
+                final EditText street = addUserView.findViewById(R.id.editTextStreetEdit);
+                final EditText serieBuletin = addUserView.findViewById(R.id.editTextSerieBuletinEdit);
+                final EditText cnp = addUserView.findViewById(R.id.editTextCNPEdit);
+
+                // open date picker dialog for birthday select
+                final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        calendar.set(Calendar.YEAR, year);
+                        calendar.set(Calendar.MONTH, month);
+                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        updateLabel();
+                    }
+
+                    private void updateLabel() {
+                        String format = "dd/MM/yyyy";
+                        SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
+
+                        birthday.setText(sdf.format(calendar.getTime()));
+                    }
+                };
+
+                birthday.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new DatePickerDialog(UserProfile.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+                    }
+                });
+
+
+                // Update Button functionality
+                editUserBuilder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // storing new user's data in newUser map
+                        final Map<String, Object> newUser = new HashMap<>();
+
+                        if(!fullname.getText().toString().equals(""))
+                            newUser.put("fullname", fullname.getText().toString());
+                        if(!email.getText().toString().equals(""))
+                            newUser.put("email", email.getText().toString());
+                        if(!birthday.getText().toString().equals(""))
+                            newUser.put("birthday", birthday.getText().toString());
+                        if(!phoneNumber.getText().toString().equals(""))
+                            newUser.put("telefon", phoneNumber.getText().toString());
+                        if(!country.getText().toString().equals(""))
+                            newUser.put("country", country.getText().toString());
+                        if(!city.getText().toString().equals(""))
+                            newUser.put("city", city.getText().toString());
+                        if(!street.getText().toString().equals(""))
+                            newUser.put("Street", street.getText().toString());
+                        if(!serieBuletin.getText().toString().equals(""))
+                            newUser.put("serieBuletin", serieBuletin.getText().toString());
+                        if(!cnp.getText().toString().equals(""))
+                            newUser.put("CNP", cnp.getText().toString());
+
+                        db.collection("users").document(currentUser.getUid()).set(newUser, SetOptions.merge());
+
+                        recreate();
+                        dialog.dismiss();
+                    }
+                });
+
+                // Cancel button functionality
+                editUserBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                // creating the dialog box
+                editUserBuilder.setView(addUserView);
+                AlertDialog dialog = editUserBuilder.create();
+                dialog.show();
+            }
+        });
+
     }
 }

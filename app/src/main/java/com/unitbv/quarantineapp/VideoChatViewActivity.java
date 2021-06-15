@@ -319,8 +319,6 @@ public class VideoChatViewActivity extends AppCompatActivity {
 
                    mLogView.logI("Quarantine Address:");
                    mLogView.logI(address);
-
-                   // TODO: Finish getLocation and verify with old location coords
                }
             }
         });

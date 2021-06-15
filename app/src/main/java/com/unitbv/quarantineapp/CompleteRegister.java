@@ -28,12 +28,14 @@ import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +43,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -57,9 +60,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
@@ -82,9 +87,12 @@ public class CompleteRegister extends AppCompatActivity {
     private CardView resetPassword = null;
     private CardView checkedView = null;
     private CardView uncheckedView = null;
+    private CardView history = null;
     private Button userLogout = null;
 
     private Intent intent = null;
+
+    private TableLayout tableLayout;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -113,6 +121,9 @@ public class CompleteRegister extends AppCompatActivity {
 
         resetPassword = findViewById(R.id.resetPassword);
         userLogout = findViewById(R.id.userLogout);
+
+        history = findViewById(R.id.history);
+
 
         checkedView = findViewById(R.id.checkedToday);
         uncheckedView = findViewById(R.id.notChecked);
@@ -176,6 +187,14 @@ public class CompleteRegister extends AppCompatActivity {
                 startActivity(new Intent(CompleteRegister.this, MainActivity.class));
                 finish();
             }
+        });
+
+        history.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(CompleteRegister.this, History.class);
+               startActivity(intent);
+           }
         });
 
         resetPassword.setOnClickListener(new View.OnClickListener() {

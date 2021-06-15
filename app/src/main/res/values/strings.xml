@@ -5,7 +5,7 @@
 
     <string name="agora_app_certificate">8a7c2635143847a2ae51fbe3b74395c1</string>
 
-    <string name="agora_access_token">00674eacb428c12400094da582170a8b66aIADKiX/v9YLe1etBO7f7GwsEXF6HkxfnkuFEcSJKEFQnxGLMzZAAAAAAEAB33sfLOxedYAEAAQA7F51g</string>
+    <string name="agora_access_token">00674eacb428c12400094da582170a8b66aIADQhiPclId2vjaq4nprmHMyiqMbn8Amx41HyF8xkrZTImLMzZAAAAAAEAC8aS6KHGvKYAEAAQAca8pg</string>
 
     <string name="fcm_token">FCM Token: %s</string>
 
