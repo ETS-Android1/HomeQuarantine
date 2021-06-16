@@ -238,10 +238,6 @@ public class VideoChatViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_video_chat_view);
         initUI();
 
-        intent = getIntent();
-        bundle = intent.getExtras();
-        user = (Users) bundle.getSerializable("user");
-
         // Ask for permissions at runtime.
         // This is just an example set of permissions. Other permissions
         // may be needed, and please refer to our online documents.
@@ -426,7 +422,7 @@ public class VideoChatViewActivity extends AppCompatActivity {
             token = null; // default, no token
         }
         mRtcEngine.joinChannel(token,  "test-channel", "Extra Optional Data", 0);
-        checkUserLocation();
+       // checkUserLocation();
     }
 
     @Override
@@ -445,6 +441,7 @@ public class VideoChatViewActivity extends AppCompatActivity {
     }
 
     private void leaveChannel() {
+        evaluateSession();
         mRtcEngine.leaveChannel();
     }
 
@@ -481,7 +478,7 @@ public class VideoChatViewActivity extends AppCompatActivity {
     }
 
     private void endCall() {
-        evaluateSession();
+
         removeFromParent(mLocalVideo);
         mLocalVideo = null;
         removeFromParent(mRemoteVideo);
@@ -497,6 +494,9 @@ public class VideoChatViewActivity extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.getBoolean("admin")){
+                    intent = getIntent();
+                    bundle = intent.getExtras();
+                    user = (Users) bundle.getSerializable("user");
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(VideoChatViewActivity.this);
                     builder.setMessage("Did the person pass the quarantine check?");

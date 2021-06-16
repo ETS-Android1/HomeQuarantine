@@ -64,403 +64,322 @@
         android:layout_height="1dp"
         android:background="@color/lightgray"
         android:layout_margin="10dp"/>
-    <LinearLayout
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:id="@+id/addProfilePic"
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_margin="10dp">
-            <LinearLayout
-                android:id="@+id/cardView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/oval_shape"
-                    android:src="@drawable/ic_baseline_add_a_photo_24"
-                    android:padding="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:text="Add Profile Picture"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/lightgray"
-                    android:layout_margin="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="You can upload a photo from your gallery"
-                    android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"/>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:id="@+id/cameraImageView"
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_margin="10dp">
-            <LinearLayout
-                android:id="@+id/cardView1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/oval_shape"
-                    android:src="@drawable/ic_baseline_credit_card_24"
-                    android:padding="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:text="Verify account"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/lightgray"
-                    android:layout_margin="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Upload your ID card in order to verify your account"
-                    android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"/>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:id="@+id/quarantineDays"
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_margin="10dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/oval_shape"
-                    android:src="@drawable/ic_baseline_date_range_24"
-                    android:padding="10dp"/>
-                <TextView
-                    android:id="@+id/quarantineDaysTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:text="X Days Left"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/lightgray"
-                    android:layout_margin="10dp"/>
-                <TextView
-                    android:id="@+id/quarantineDaysDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="You have 14 days left of quarantine!\n Stay safe!"
-                    android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"/>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-    <LinearLayout
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/resetPassword"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_margin="10dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/oval_shape"
-                    android:src="@drawable/ic_baseline_settings_24"
-                    android:padding="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:text="Reset Password"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/lightgray"
-                    android:layout_margin="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="You can reset your password to enhance your account security"
-                    android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"/>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/history"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_margin="10dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/oval_shape"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_baseline_history_24" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="History"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="10dp"
-                    android:background="@color/lightgray" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="You can check your quarantine history"
-                    android:textColor="@android:color/darker_gray" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-    <LinearLayout
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/checkedToday"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_width="340dp"
-            android:layout_height="150dp"
-            android:layout_margin="10dp">
-            <LinearLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/oval_shape"
-                    android:src="@drawable/ic_baseline_check_24"
-                    android:padding="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:text="Current Status"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/lightgray"
-                    android:layout_margin="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="You've been checked today!"
-                    android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"/>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:id="@+id/notChecked"
-            android:clickable="true"
-            android:layout_width="340dp"
-            android:layout_height="150dp"
-            android:layout_margin="10dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/oval_shape"
-                    android:src="@drawable/ic_baseline_notification_important_24"
-                    android:padding="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:text="Current Status"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/lightgray"
-                    android:layout_margin="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="You haven't been checked today yet!"
-                    android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"/>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-
-    </LinearLayout>
-</LinearLayout>
-
-
-    <!-- <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        <ScrollView
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="#121212"
-            android:elevation="10dp"
-            android:gravity="clip_horizontal|center|center_horizontal"
-            android:orientation="vertical"
-            tools:context=".CompleteRegister">
-
+            android:orientation="vertical">
             <LinearLayout
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
+                <androidx.cardview.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:id="@+id/addProfilePic"
+                    android:layout_width="160dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:id="@+id/cardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/oval_shape"
+                            android:src="@drawable/ic_baseline_add_a_photo_24"
+                            android:padding="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="Add Profile Picture"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/lightgray"
+                            android:layout_margin="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="You can upload a photo from your gallery"
+                            android:padding="5dp"
+                            android:textColor="@android:color/darker_gray"/>
 
-                <Button
-                    android:id="@+id/resetPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:backgroundTint="#4B802A"
-                    android:gravity="center"
-                    android:text="Reset PAssword" />
-
-                <Button
-                    android:id="@+id/userLogout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:backgroundTint="#AF2121"
-                    android:gravity="center"
-                    android:text="Logout" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="25dp"
-                    android:background="#731B1A1A"
-                    android:elevation="10dp"
-                    android:fadingEdgeLength="5dp"
-                    android:padding="15dp"
-                    android:shadowColor="#999A9999"
-                    android:shadowDx="2.5"
-                    android:shadowDy="-1.5"
-                    android:shadowRadius="1.5"
-                    android:text="In order to complete the registration please provide a selfie and scan your ID."
-                    android:textAlignment="center"
-                    android:textColor="#DEFFFFFF"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-
-                <ImageView
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
                     android:id="@+id/cameraImageView"
-                    android:layout_width="121dp"
-                    android:layout_height="113dp"
-                    android:layout_gravity="center"
-                    android:padding="15dp"
-                    app:srcCompat="@android:drawable/ic_menu_camera" />
+                    android:layout_width="160dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:id="@+id/cardView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/oval_shape"
+                            android:src="@drawable/ic_baseline_credit_card_24"
+                            android:padding="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="Verify account"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/lightgray"
+                            android:layout_margin="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Upload your ID card in order to verify your account"
+                            android:padding="5dp"
+                            android:textColor="@android:color/darker_gray"/>
 
-                <ImageView
-                    android:id="@+id/selfie"
-                    android:layout_width="234dp"
-                    android:layout_height="218dp"
-                    android:layout_gravity="center"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:id="@+id/quarantineDays"
+                    android:layout_width="160dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/oval_shape"
+                            android:src="@drawable/ic_baseline_date_range_24"
+                            android:padding="10dp"/>
+                        <TextView
+                            android:id="@+id/quarantineDaysTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="X Days Left"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/lightgray"
+                            android:layout_margin="10dp"/>
+                        <TextView
+                            android:id="@+id/quarantineDaysDetails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="You have 14 days left of quarantine!\n Stay safe!"
+                            android:padding="5dp"
+                            android:textColor="@android:color/darker_gray"/>
 
-                <FrameLayout
-                    android:id="@+id/frame_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="500dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
             </LinearLayout>
-        </ScrollView>
+            <LinearLayout
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/resetPassword"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:layout_width="160dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/oval_shape"
+                            android:src="@drawable/ic_baseline_settings_24"
+                            android:padding="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="Reset Password"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/lightgray"
+                            android:layout_margin="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="You can reset your password to enhance your account security"
+                            android:padding="5dp"
+                            android:textColor="@android:color/darker_gray"/>
 
-    </LinearLayout> -->
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/history"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:layout_width="160dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/oval_shape"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_baseline_history_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="History"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="10dp"
+                            android:background="@color/lightgray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="You can check your quarantine history"
+                            android:textColor="@android:color/darker_gray" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/checkedToday"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:layout_width="340dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/oval_shape"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:padding="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="Current Status"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/lightgray"
+                            android:layout_margin="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="You've been checked today!"
+                            android:padding="5dp"
+                            android:textColor="@android:color/darker_gray"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:id="@+id/notChecked"
+                    android:clickable="true"
+                    android:layout_width="340dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/oval_shape"
+                            android:src="@drawable/ic_baseline_notification_important_24"
+                            android:padding="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="Current Status"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/lightgray"
+                            android:layout_margin="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="You haven't been checked today yet!"
+                            android:padding="5dp"
+                            android:textColor="@android:color/darker_gray"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

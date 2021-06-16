@@ -23,30 +23,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".History"></activity>
+        <activity android:name=".History"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBt8yaAcZVnREk0JDw14HNQABXHqZfBy8w" />
 
-        <activity android:name=".VideoChatViewActivity">
+        <activity android:name=".VideoChatViewActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="OPEN_VIDEOCALL" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".IntroActivity" />
-        <activity android:name=".UserProfile" />
-        <activity android:name=".AdminPanel" />
-        <activity android:name=".CompleteRegister">
+        <activity android:name=".IntroActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UserProfile"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AdminPanel"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CompleteRegister"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="OPEN_COMPLETEREGISTER" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

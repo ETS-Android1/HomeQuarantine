@@ -3,6 +3,7 @@ package com.unitbv.quarantineapp;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -11,6 +12,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
+import android.provider.Settings;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -21,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -157,13 +160,45 @@ public class IntroActivity extends AppCompatActivity {
                             REQUEST_CODE_LOCATION_PERMISSION
                     );
                 } else {
-                    getCurrentLocation();
+                    LocationManager lm = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+                    boolean gps_enabled = false;
+                    boolean network_enabled = false;
 
-                    //open next activity
-                    Intent intent = new Intent(getApplicationContext(), CompleteRegister.class);
-                    startActivity(intent);
-                    savePrefsData();
-                    finish();
+                    try {
+                        gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+                    } catch(Exception ex) {}
+
+                    try {
+                        network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+                    } catch(Exception ex) {}
+
+                    if(!gps_enabled && !network_enabled) {
+                        // notify user
+                        new AlertDialog.Builder(IntroActivity.this)
+                                .setMessage("Location is not enabled!")
+                                .setPositiveButton("Enable Location", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                                        getCurrentLocation();
+
+                                        //open next activity
+                                        Intent intent = new Intent(getApplicationContext(), CompleteRegister.class);
+                                        startActivity(intent);
+                                        savePrefsData();
+                                        finish();
+                                    }
+                                })
+                                .setNegativeButton("Cancel",null)
+                                .show();
+                    } else {
+                        //open next activity
+                        Intent intent = new Intent(getApplicationContext(), CompleteRegister.class);
+                        startActivity(intent);
+                        savePrefsData();
+                        finish();
+                    }
+
                 }
 
             }

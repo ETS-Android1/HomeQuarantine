@@ -74,7 +74,6 @@ public class AdminPanel extends AppCompatActivity {
     private FirebaseAuth auth = FirebaseAuth.getInstance();
     private FirebaseFunctions func = FirebaseFunctions.getInstance();
 
-
     private Intent intent = null;
     private Bundle bundle = null;
 
