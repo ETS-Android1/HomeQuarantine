@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -29,12 +30,16 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -92,9 +97,9 @@ public class IntroActivity extends AppCompatActivity {
 
         // fill list screen
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Fresh Food", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit", R.drawable.img1));
-        mList.add(new ScreenItem("Fast Delivery", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit", R.drawable.img2));
-        mList.add(new ScreenItem("Easy Payment", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit", R.drawable.img3));
+        mList.add(new ScreenItem("Welcome!", "Welcome to Home Quarantine App! This app is meant to ease our life in quarantine, offering an easy-to-use and reliable software for checking remotely your quarantine status.", R.drawable.img1));
+        mList.add(new ScreenItem("Verify your account!", "After you were registered in the system, you got an e-mail with your signin credentials. Use it to login and then make sure you verify your account and change your password!", R.drawable.img2));
+        mList.add(new ScreenItem("We need your permissions!", "In order for the app to work properly we need you to give access to your location! MAKE SURE YOU START QUARANTINE IN THE LOCATION YOU WILL SPENT THE 14 DAYS!", R.drawable.img3));
 
         // setup viewpager
         screenPager = findViewById(R.id.screen_viewpager);
@@ -251,32 +256,42 @@ public class IntroActivity extends AppCompatActivity {
 
     private void getCurrentLocation() {
         final Map<String, Object> gpsCoords = new HashMap<>();
-        LocationRequest locationRequest = new LocationRequest();
+        final LocationRequest locationRequest = new LocationRequest();
         locationRequest.setInterval(10000);
         locationRequest.setFastestInterval(3000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.getFusedLocationProviderClient(IntroActivity.this)
-                    .requestLocationUpdates(locationRequest, new LocationCallback() {
-                        @Override
-                        public void onLocationResult(LocationResult locationResult) {
-                            super.onLocationResult(locationResult);
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(locationRequest);
+        LocationServices
+                .getSettingsClient(this)
+                .checkLocationSettings(builder.build())
+                .addOnSuccessListener(new OnSuccessListener<LocationSettingsResponse>() {
+                    @Override
+                    public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
+                        if (ActivityCompat.checkSelfPermission(IntroActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(IntroActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                             LocationServices.getFusedLocationProviderClient(IntroActivity.this)
-                                    .removeLocationUpdates(this);
-                            if (locationResult != null && locationResult.getLocations().size() > 0) {
-                                int latestLocationIndex = locationResult.getLocations().size() - 1;
-                                 double latitude = locationResult.getLocations().get(latestLocationIndex).getLatitude();
-                                 double longitude = locationResult.getLocations().get(latestLocationIndex).getLongitude();
+                                    .requestLocationUpdates(locationRequest, new LocationCallback() {
+                                        @Override
+                                        public void onLocationResult(LocationResult locationResult) {
+                                            super.onLocationResult(locationResult);
+                                            LocationServices.getFusedLocationProviderClient(IntroActivity.this)
+                                                    .removeLocationUpdates(this);
+                                            if (locationResult != null && locationResult.getLocations().size() > 0) {
+                                                int latestLocationIndex = locationResult.getLocations().size() - 1;
+                                                double latitude = locationResult.getLocations().get(latestLocationIndex).getLatitude();
+                                                double longitude = locationResult.getLocations().get(latestLocationIndex).getLongitude();
 
-                                 gpsCoords.put("longitude", String.valueOf(locationResult.getLocations().get(latestLocationIndex).getLongitude()));
-                                 gpsCoords.put("latitude", String.valueOf(locationResult.getLocations().get(latestLocationIndex).getLatitude()));
+                                                gpsCoords.put("longitude", String.valueOf(locationResult.getLocations().get(latestLocationIndex).getLongitude()));
+                                                gpsCoords.put("latitude", String.valueOf(locationResult.getLocations().get(latestLocationIndex).getLatitude()));
 
-                                 db.collection("users").document(auth.getCurrentUser().getUid()).set(gpsCoords, SetOptions.merge());
-                            }
+                                                db.collection("users").document(auth.getCurrentUser().getUid()).set(gpsCoords, SetOptions.merge());
+                                            }
+                                        }
+                                    }, Looper.getMainLooper());
                         }
-                    }, Looper.getMainLooper());
-        }
+
+                    }
+                });
 
     }
 

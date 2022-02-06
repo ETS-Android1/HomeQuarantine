@@ -106,18 +106,14 @@ public class UserProfile extends AppCompatActivity {
                 .build();
 
         final Api api = retrofit.create(Api.class);
-
         notify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SendNotification sendNotification = new SendNotification("Please take the call in order to check you in!", "Quarantine Check", "OPEN_VIDEOCALL");
                 RequestNotification requestNotification = new RequestNotification();
                 requestNotification.setSendNotification(sendNotification);
-
                 requestNotification.setToken(currentUser.getFCM_Token());
-
                 retrofit2.Call<ResponseBody> responseBodyCall = api.sendNotification(requestNotification);
-
                 responseBodyCall.enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(retrofit2.Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {

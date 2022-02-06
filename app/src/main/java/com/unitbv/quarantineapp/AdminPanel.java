@@ -400,7 +400,8 @@ public class AdminPanel extends AppCompatActivity {
         Map<String, Object> msgData = new HashMap<>();
 
         msgData.put("subject", "Home Quarantine Password");
-        msgData.put("html", "Welcome to Home Quarantine App.<br>This is your password:<b> " + password + "</b><br>To enhance security of your account please reset your password!");
+        msgData.put("html", "Welcome to Home Quarantine App.<br>This is your password:<b> "
+                + password + "</b><br>To enhance security of your account please reset your password!");
         docData.put("to", Arrays.asList(sendTo));
         docData.put("message", msgData);
 

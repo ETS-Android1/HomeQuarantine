@@ -292,11 +292,15 @@ public class VideoChatViewActivity extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Map<String, String> gps;
-                gps = getCurrentLocation();
+               // gps = getCurrentLocation();
 
                if(documentSnapshot.getBoolean("admin")){
                    // db.collection("users").document(user.getUid()).set(gps, SetOptions.merge());
-                   Toast.makeText(VideoChatViewActivity.this, gps.get("currLongitude"), Toast.LENGTH_LONG).show();
+                   // Toast.makeText(VideoChatViewActivity.this, gps.get("currLongitude"), Toast.LENGTH_LONG).show();
+                   intent = getIntent();
+                   bundle = intent.getExtras();
+                   user = (Users) bundle.getSerializable("user");
+
                    String lat = user.getLatitude();
                    String longit = user.getLongitude();
 
@@ -422,7 +426,7 @@ public class VideoChatViewActivity extends AppCompatActivity {
             token = null; // default, no token
         }
         mRtcEngine.joinChannel(token,  "test-channel", "Extra Optional Data", 0);
-       // checkUserLocation();
+        checkUserLocation();
     }
 
     @Override
